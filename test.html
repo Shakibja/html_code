@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Cropping with Drag and Drop</title>
+<style>
+  #dropArea {
+    width: 300px;
+    height: 300px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    line-height: 300px;
+    margin: 20px auto;
+  }
+</style>
+</head>
+<body>
+  <div id="dropArea">Drag & Drop Image Here</div>
+  <canvas id="canvas" style="border:1px solid black; display:none;"></canvas>
+
+  <script>
+    // Function to handle file drop
+    function handleFileDrop(event) {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0];
+      handleFile(file);
+    }
+
+    // Function to handle file input change
+    function handleFileInputChange(event) {
+      const file = event.target.files[0];
+      handleFile(file);
+    }
+
+    // Function to handle selected file
+    function handleFile(file) {
+      const reader = new FileReader();
+      
+      reader.onload = function(event) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.getElementById('canvas');
+          const ctx = canvas.getContext('2d');
+          
+          // Set canvas dimensions same as image dimensions
+          canvas.width = img.width;
+          canvas.height = img.height;
+          
+          // Draw the image onto the canvas
+          ctx.drawImage(img, 0, 0);
+          
+          // Coordinates for cropping (left, top, width, height)
+          const cropX = 100; // Example: starting 100px from the left
+          const cropY = 100; // Example: starting 100px from the top
+          const cropWidth = 200; // Example: width of 200px
+          const cropHeight = 200; // Example: height of 200px
+          
+          // Crop the image
+          const croppedImage = ctx.getImageData(cropX, cropY, cropWidth, cropHeight);
+          
+          // Clear the canvas
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          // Resize canvas to fit cropped image
+          canvas.width = cropWidth;
+          canvas.height = cropHeight;
+          
+          // Draw cropped image onto canvas
+          ctx.putImageData(croppedImage, 0, 0);
+          
+          // Show canvas
+          canvas.style.display = 'block';
+        }
+        img.src = event.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+
+    // Function to handle drag over
+    function handleDragOver(event) {
+      event.preventDefault();
+    }
+
+    // Add event listeners
+    const dropArea = document.getElementById('dropArea');
+    dropArea.addEventListener('drop', handleFileDrop);
+    dropArea.addEventListener('dragover', handleDragOver);
+
+    // Add event listener to file input
+    document.getElementById('fileInput').addEventListener('change', handleFileInputChange);
+  </script>
+</body>
+</html>
