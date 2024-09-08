@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Ticker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #headline {
+    background: #fff;
+    border: 1px solid #d0301f;
+    padding: 10px;
+}
+
+.headlines {
+    width: 100%;
+    font-size: 14px;
+    position: fixed;
+    overflow: hidden;
+    z-index: 99;
+    position: relative;
+    height: 30px
+}
+
+.headline_left {
+    font-size: 16px;
+    font-weight: 700;
+    uppercase;
+    color: #fff;
+    display: inline-block;
+    background: #d0301f;
+    position: absolute;
+    z-index: 99;
+    height: 50px;
+    text-align: left;
+    padding-right: 30px;
+    _clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+    _width: 200px
+}
+
+.headline_left p {
+    margin-left: 25px;
+    margin-top: 3px
+}
+
+.headlines ul {
+    width: 100%;
+    margin: 0;
+    list-style-type: none
+}
+
+.headlines ul li {
+    list-style: none;
+    padding: 2px;
+    margin: 0 0 0 5px;
+    font-size: 16px
+}
+
+.headlines marquee {
+    float: left;
+    width: 100%;
+    height: 30px;
+    padding: 0
+}
+
+.headlines ul li a {
+    text-decoration: none;
+    color: #000;
+    margin-right: 0
+}
+
+.headlines ul li img {
+    margin-top: -3px
+}
+    </style>
+</head>
+<body>
+    <section id="headline">
+        <div class="headlines">
+            <div class="headline_left">
+                <p>শিরোনাম</p>
+            </div>
+            <ul>
+                <li>
+                    <marquee direction="left" speed="normal" scrollamount="7" behavior="scroll" onmouseover="this.stop();" onmouseout="this.start();">
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/international/27822"> সৌদি যুবরাজের ভয়ংকর উত্থানের নেপথ্যে</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27821"> নতুন সরকারে ফের দায়িত্ব পুনর্বণ্টন</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/international/27820"> নিজেদের তৈরি ‘সুইসাইড ড্রোন’ উদ্বোধন করলেন কিম</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/entertainment/27819"> দেশের প্রেক্ষাগৃহে মুক্তি পাচ্ছে ‘শনিবার বিকেল’</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/sports/27818"> পাকিস্তানকে হারানোর কৃতিত্ব যাদের দিলেন ফাহিম</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/politics/27817"> আপনাদের দাবি-দাওয়া এতদিন কোথায় ছিল, প্রশ্ন জামায়াত আমিরের</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/politics/27816"> আশা করি আমাদের ৬০ লাখ লোকের মামলা তুলে নেওয়া হবে : মির্জা ফখরুল</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27815"> ‌আনসারদের ছদ্মবেশে যারা ষড়যন্ত্র করতে এসেছিল তারা সফল হবে না : আসিফ নজরুল</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27814"> মন্ত্রী-এমপি-ব্যবসায়ী-পুলিশসহ শতাধিক ব্যক্তির ব্যাংক হিসাব জব্দ</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27813"> আন্দোলনে গুলিবিদ্ধ দুই ছাত্রের সফল অস্ত্রোপচার</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27812"> বাড়ছে পদ্মার পানি, রাজশাহীতে বন্যা আতঙ্ক</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27811"> দখল ও লুটকারীর ধর্মীয় কোনো পরিচয় নেই : ধর্ম উপদেষ্টা</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/international/27810"> ত্রিপুরাসহ উত্তরপশ্চিম ভারতে ভারী বৃষ্টির শঙ্কা, রেড অ্যালার্ট</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/education/27809"> ঢাবির নতুন উপাচার্য ড. নিয়াজ আহমেদ খান</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27808"> ফারাক্কার গেট খুলে দেওয়ার বিষয়ে যা বলছে ভারত</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27807"> অন্তর্বর্তী সরকার নাগরিকদের অধিকার রক্ষায় দৃঢ়প্রতিজ্ঞ: ড. ইউনূস</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27806"> বানভাসি মানুষের পাশে দাঁড়ান : রাষ্ট্রপতি</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27805"> ছাত্র-জনতার প্রতিরোধে ৭ মিনিটও দাঁড়াতে পারেনি বিদ্রোহী আনসাররা</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27804"> বিপদে এই একতা দেখাচ্ছে নতুন বাংলাদেশের স্বপ্ন</a>
+                        <i class="fa fa-square text-brand ml-2 mr-1 font-10" aria-hidden="true"></i>
+                        <a href="https://www.fanamnews.com/national/27803"> ভারত কি শেখ হাসিনাকে ফিরিয়ে দিতে বাধ্য?</a>
+                    </marquee>
+                </li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

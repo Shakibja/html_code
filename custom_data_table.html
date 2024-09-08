@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Data Table</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+}
+
+.table-container {
+    margin: 20px;
+}
+
+#dataTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#dataTable th, #dataTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#dataTable th {
+    cursor: pointer;
+    background-color: #f2f2f2;
+}
+
+#dataTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#dataTable tr:hover {
+    background-color: #ddd;
+}
+
+#search {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <input type="text" id="search" placeholder="Search...">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Name</th>
+                    <th onclick="sortTable(1)">Age</th>
+                    <th onclick="sortTable(2)">City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>28</td>
+                    <td>New York</td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>34</td>
+                    <td>Los Angeles</td>
+                </tr>
+                <tr>
+                    <td>Michael Johnson</td>
+                    <td>45</td>
+                    <td>Chicago</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search');
+    const table = document.getElementById('dataTable');
+    const tableBody = table.querySelector('tbody');
+    const rows = Array.from(tableBody.getElementsByTagName('tr'));
+
+    // Function to filter table rows
+    function filterTable() {
+        const searchTerm = searchInput.value.toLowerCase();
+        rows.forEach(row => {
+            const cells = Array.from(row.getElementsByTagName('td'));
+            const match = cells.some(cell => cell.textContent.toLowerCase().includes(searchTerm));
+            row.style.display = match ? '' : 'none';
+        });
+    }
+
+    // Function to sort the table
+    window.sortTable = function (columnIndex) {
+        const isAscending = table.getAttribute('data-sort') === 'asc';
+        table.setAttribute('data-sort', isAscending ? 'desc' : 'asc');
+        
+        rows.sort((rowA, rowB) => {
+            const cellA = rowA.children[columnIndex].textContent.trim();
+            const cellB = rowB.children[columnIndex].textContent.trim();
+            return isAscending 
+                ? cellA.localeCompare(cellB) 
+                : cellB.localeCompare(cellA);
+        });
+
+        rows.forEach(row => tableBody.appendChild(row));
+    }
+
+    // Add event listener for search input
+    searchInput.addEventListener('input', filterTable);
+
+    // Initial filter
+    filterTable();
+});
+
+    </script>
+</body>
+</html>

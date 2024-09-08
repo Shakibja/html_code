@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Highlights Form</title>
+    <!-- CKEditor CDN -->
+    <!-- <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script> -->
+</head>
+<body>
+    <div class="container">
+        <form action="your_form_action_url" method="POST">
+            <div class="form-group">
+                <label class="font-16-bold fw-bold" for="news_highlights">News Highlights</label>
+                <textarea id="newsHighlightEditor" name="news_highlights" class="form-control" cols="30" rows="5"></textarea>	
+                <x-input-error :messages="$errors->get('news_highlights')" class="mt-2 text-danger" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+    <!-- Initialize CKEditor -->
+     <!-- Check Editor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
+    <script>
+      ClassicEditor
+              .create( document.querySelector( '#newsHighlightEditor' ) )
+              .then( editor => {
+                      console.log( editor );
+              } )
+              .catch( error => {
+                      console.error( error );
+              } );
+    </script>
+    <!-- <script>
+        CKEDITOR.replace('newsHighlightEditor');
+    </script> -->
+</body>
+</html>

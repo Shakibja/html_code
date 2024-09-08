@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom JavaScript Modal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        /* Modal Background */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%; /* Could be more or less, depending on screen size */
+            border-radius: 8px;
+        }
+
+        /* Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Custom Button */
+        .btn-custom {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button to Open the Modal -->
+    <button class="btn-custom" id="openModalBtn">Open Custom Modal</button>
+
+    <!-- The Modal -->
+    <div id="customModal" class="modal">
+        <!-- Modal Content -->
+        <div class="modal-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <h2>Custom Modal Title</h2>
+            <p>This is a custom modal created with plain JavaScript.</p>
+            <button class="btn-custom" id="modalActionBtn">Do Something</button>
+        </div>
+    </div>
+
+    <script>
+        // Get modal element
+        const modal = document.getElementById('customModal');
+        // Get open modal button
+        const openModalBtn = document.getElementById('openModalBtn');
+        // Get close button
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        // Open modal
+        openModalBtn.addEventListener('click', function() {
+            modal.style.display = 'block';
+        });
+
+        // Close modal
+        closeModalBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Optional: Add functionality to the modal action button
+        const modalActionBtn = document.getElementById('modalActionBtn');
+        modalActionBtn.addEventListener('click', function() {
+            alert('Modal action button clicked!');
+        });
+    </script>
+</body>
+</html>
